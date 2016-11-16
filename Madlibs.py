@@ -1,30 +1,40 @@
-madlib = "Make sure your lunch _ is filled with nutritious _ food. Do not go to the _ food stand across the street from school"
-print(madlib)
-
-
 def addResponse(madlib, response):
-    length = len(madlib) - 1
-    newMadlib = ""
+    madlib_length = len(madlib)
+    new_madlib = ""
     counter = 0
 
-    for i in range(length):
-        newMadlib += madlib[i]
+    # Iterates through the characters on a madlib
+    for i in range(madlib_length):
+        # Adds each character to the new_madlib variable
+        new_madlib += madlib[i]
 
         if madlib[i] == "_" and counter == 0:
-            newMadlib = newMadlib.replace("_", response)
+            # Changes underscore for user responde in new_madlib variable
+            new_madlib = new_madlib.replace("_", response)
+            # Avoids changing every underscore for current response
             counter = counter+1
 
-    return newMadlib
+    # Prints madlib modified by user
+    print(new_madlib)
+
+    return new_madlib
 
 
-response1 = raw_input("first answer: ")
-madlib1 = addResponse(madlib, response1)
-print(madlib1)
+if __name__ == "__main__":
+    madlib = "Make sure your lunch _ is filled with nutritious _ food. " \
+             "Do not go to the _ food stand across the street from school"
 
-response2 = raw_input("second answer: ")
-madlib2 = addResponse(madlib1, response2)
-print(madlib2)
+    # Shows original madlib to the user
+    print(madlib)
 
-response3 = raw_input("third answer: ")
-madlib3 = addResponse(madlib2, response3)
-print(madlib3)
+    # Reads and add first response to the madlib string
+    response_one = raw_input("first answer: ")
+    madlib_one = addResponse(madlib, response_one)
+
+    # Reads and add second response to the madlib string
+    response_two = raw_input("second answer: ")
+    madlib_two = addResponse(madlib_one, response_two)
+
+    # Reads and add third response to the madlib string
+    response_three = raw_input("third answer: ")
+    madlib_three = addResponse(madlib_two, response_three)

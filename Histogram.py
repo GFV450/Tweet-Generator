@@ -1,28 +1,46 @@
-def histogram(source_text):
+def getSourceText():
+    source_file = open("The Russian Advance.txt")
+    source_text = source_file.readlines()
+
+    return source_text
+
+
+def convertToList(source_text):
     # Replaces the following characters for blank spaces
-    source_text = source_text.replace(".", "").replace(",", "") \
-                  .replace(":", "").replace(";", "") \
-                  .replace("(", "").replace(")", "")
+    for punctuation in '.,:;()':
+        source_text = source_text.replace(punctuation, "")
 
+    # source_text = source_text.replace(".", "").replace(",", "") \
+    #               .replace(":", "").replace(";", "") \
+    #               .replace("(", "").replace(")", "")
+
+    # Assigns each word to an index in an array
     source_text = source_text.split()
-    # print(source_text)
 
-    histogram = {"and": 0}
-    for word in source_text:
-        try:
+    return source_text
+
+
+def convertToHistogram(words_list):
+    # Created a dictionary for the histogram
+    histogram = {}
+    for word in words_list:
+        if word in histogram:
+            # If the word is in the dictionary, add 1 to its value
             histogram[word] += 1
-        except KeyError:
+        else:
+            # If the word is not in the dictionary, assign it as a key
+            # and add 1 to its value
             histogram.update({word: 1})
+            histogram[word] = 1
 
     return histogram
-    # for key, value in dictionary.items():
-    #     print(key, value)
 
 
 if __name__ == "__main__":
-    words_file = open("The Russian Advance.txt")
-    words_list = words_file.read()
+    # source_text = getSourceText()
+    source_text = 'one fish two fish red fish blue fish'
 
-    histogram = histogram(words_list)
+    words_list = convertToList(source_text)
 
-    print("It worked!")
+    histogram = convertToHistogram(words_list)
+    print histogram

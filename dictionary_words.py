@@ -2,13 +2,23 @@ import sys
 import random
 
 
+def getSourceText():
+    source_file = open("/usr/share/dict/words")
+    source_text = source_file.readlines()
+
+    return source_text
+
+
 def readFile(num_words, words_list):
     sentence = ""
 
     for i in range(num_words):
         # index: Randomized number to access a specific words_list word
         index = random.randint(0, len(words_list)-1)
+        # Word is added to the sentence and newline is erased
         sentence += (words_list[index][:-1] + " ")
+
+    return sentence
 
     # Less optimized way:
     # for index, word in enumerate(data):
@@ -19,15 +29,14 @@ def readFile(num_words, words_list):
     #     elif num_words == 0:
     #         break
 
-    return sentence
-
 
 if __name__ == "__main__":
-    words_file = open("/usr/share/dict/words")
-    words_list = words_file.readlines()
+    source_text = getSourceText()
 
-    # num_words: Number of words to append to the sentence
+    # num_words: Number of words to append to the sentence defined by the user
     num_words = int(sys.argv[1])
 
-    sentence = readFile(num_words, words_list)
+    # Reads the source text and returns a sentence
+    sentence = readFile(num_words, source_text)
+
     print(sentence)
