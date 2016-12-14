@@ -30,7 +30,7 @@ def convertToHistogram(words_list):
         else:
             # If the word is not in the dictionary, assign it as a key
             # and add 1 to its value
-            histogram.update({word: 1})
+            # histogram.update({word: 1})
             histogram[word] = 1
 
     return histogram
@@ -43,4 +43,4 @@ if __name__ == "__main__":
     words_list = convertToList(source_text)
 
     histogram = convertToHistogram(words_list)
-    print histogram
+    print(histogram)
