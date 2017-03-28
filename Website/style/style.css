@@ -1,0 +1,38 @@
+body {
+    font-family: "HelveticaNeue-Regular";
+    height: auto;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+/*HOME SCREEN*/
+.firstScreen {
+    background-image: url(../img/LOTR-background.jpg);
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.projectTD {
+    width: 100vw;
+}
+
+.projectTitle {
+    color: white;
+    text-align: center;
+}
+
+.projectDesc {
+    color: white;
+    text-align: center;
+}
